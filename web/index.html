@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>OskegDrop</title>
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="logo">OSKEG<span>DROP</span></div>
+            <div class="balance">
+                <span>🪙</span>
+                <strong id="balance">0</strong>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="hero-glow"></div>
+                <p class="eyebrow">WELCOME TO THE UNIVERSE</p>
+                <h1>OSKEG<span>DROP</span></h1>
+                <p class="subtitle">Твоя коллекция начинается здесь.</p>
+            </section>
+
+            <nav class="tabs">
+                <button class="tab active" data-page="home">Главная</button>
+                <button class="tab" data-page="shop">Магазин</button>
+                <button class="tab" data-page="inventory">Инвентарь</button>
+                <button class="tab" data-page="rating">Топ</button>
+            </nav>
+
+            <section id="home" class="page active">
+                <div class="section-heading">
+                    <h2>Ежедневная награда</h2>
+                    <span class="tag">FREE</span>
+                </div>
+
+                <div class="bonus-card">
+                    <div>
+                        <h3>Daily Bonus</h3>
+                        <p>Забирай 100 бесплатных монет каждый день.</p>
+                    </div>
+                    <div class="bonus-icon">🎁</div>
+                    <button id="bonusButton" class="primary-button">
+                        Забрать бонус
+                    </button>
+                </div>
+
+                <div class="section-heading">
+                    <h2>Твой профиль</h2>
+                </div>
+
+                <div class="profile-card">
+                    <div class="avatar">👾</div>
+                    <div>
+                        <h3 id="username">Игрок</h3>
+                        <p>Участник OskegDrop</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="shop" class="page">
+                <div class="section-heading">
+                    <h2>Магазин</h2>
+                    <span class="tag">STARS</span>
+                </div>
+
+                <p class="section-description">
+                    Каждый набор содержит указанные ниже предметы.
+                    Оплата производится Telegram Stars.
+                </p>
+
+                <div id="products" class="products">
+                    <p class="muted">Загрузка магазина...</p>
+                </div>
+            </section>
+
+            <section id="inventory" class="page">
+                <div class="section-heading">
+                    <h2>Инвентарь</h2>
+                </div>
+
+                <div id="items" class="items">
+                    <p class="muted">Загрузка инвентаря...</p>
+                </div>
+            </section>
+
+            <section id="rating" class="page">
+                <div class="section-heading">
+                    <h2>Таблица лидеров</h2>
+                </div>
+
+                <div id="leaderboard" class="leaderboard">
+                    <p class="muted">Загрузка рейтинга...</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>OSKEGDROP © 2026</p>
+            <p>Collect • Customize • Enjoy</p>
+        </footer>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
