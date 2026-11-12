@@ -1,5 +1,3 @@
-import asyncio
-from bot import bot, dp, BOT_TOKEN
 import os
 import hmac
 import json
@@ -22,7 +20,8 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from aiogram.types import LabeledPrice
-from bot import bot, BOT_TOKEN
+import asyncio
+from bot import bot, dp, BOT_TOKEN
 
 
 app = FastAPI(title="OskegDrop API")
@@ -109,9 +108,26 @@ def current_user(authorization: str | None):
     return user
 
 
+polling_task = None
+
+
 @app.on_event("startup")
-def startup():
+async def startup():
+    global polling_task
+
     db.init_db()
+    polling_task = asyncio.create_task(
+        dp.start_polling(bot)
+    )
+
+
+@app.on_event("shutdown")
+async def shutdown():
+    if polling_task:
+        await dp.stop_polling()
+        await polling_task
+
+    await bot.session.close()
 
 
 @app.get("/")
