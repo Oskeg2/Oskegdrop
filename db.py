@@ -23,7 +23,7 @@ class Conn:
 
     def run(self, sql, params=()):
         cur = self.raw.cursor()
-        cur.execute(self._prep(sq1), params)
+        cur.execute(self._prep(sql), params)
         return cur.rowcount
 
     def one(self, sql, params=()):
