@@ -19,6 +19,13 @@ from games import GameError
 from store import CASES, DEPOSITS, GIFTS, cases_public
 
 app = FastAPI(title="OskegDrop API")
+
+import asyncio
+
+@app.on_event("startup")
+async def startup_event():
+    asyncio.create_task(dp.start_polling(bot))
+
 app.mount("/static", StaticFiles(directory="web"), name="static")
 
 
