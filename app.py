@@ -258,16 +258,16 @@ class CrashStart(BaseModel):
     auto: float | None = None
 
 
-@app.get("/api/crash/state")
+@app.get("/api/crash_state")
 def crash_state(authorization: str | None = Header(default=None)):
     return games.crash_state(uid(authorization))
 
 
-@app.post("/api/crash/start")
+@app.post("/api/crash_start")
 def crash_start(body: CrashStart, authorization: str | None = Header(default=None)):
     return games.crash_start(uid(authorization), body.bet, body.auto)
 
 
-@app.post("/api/crash/cashout")
+@app.post("/api/crash_cashout")
 def crash_cashout(authorization: str | None = Header(default=None)):
     return games.crash_cashout(uid(authorization))
