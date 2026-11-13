@@ -231,22 +231,22 @@ class MinesReveal(BaseModel):
     cell: int
 
 
-@app.get("/api/mines/state")
+@app.get("/mines_state")
 def mines_state(authorization: str | None = Header(default=None)):
     return games.mines_state(uid(authorization))
 
 
-@app.post("/api/mines/start")
+@app.post("/mines_bet")
 def mines_start(body: MinesStart, authorization: str | None = Header(default=None)):
     return games.mines_start(uid(authorization), body.bet, body.mines)
 
 
-@app.post("/api/mines/reveal")
+@app.post("/mines_reveal")
 def mines_reveal(body: MinesReveal, authorization: str | None = Header(default=None)):
     return games.mines_reveal(uid(authorization), body.cell)
 
 
-@app.post("/api/mines/cashout")
+@app.post("/mines_cashout")
 def mines_cashout(authorization: str | None = Header(default=None)):
     return games.mines_cashout(uid(authorization))
 
@@ -258,16 +258,16 @@ class CrashStart(BaseModel):
     auto: float | None = None
 
 
-@app.get("/api/crash_state")
+@app.get("/crash_state")
 def crash_state(authorization: str | None = Header(default=None)):
     return games.crash_state(uid(authorization))
 
 
-@app.post("/api/crash_start")
+@app.post("/crash_bet")
 def crash_start(body: CrashStart, authorization: str | None = Header(default=None)):
     return games.crash_start(uid(authorization), body.bet, body.auto)
 
 
-@app.post("/api/crash_cashout")
+@app.post("/crash_cashout")
 def crash_cashout(authorization: str | None = Header(default=None)):
     return games.crash_cashout(uid(authorization))
