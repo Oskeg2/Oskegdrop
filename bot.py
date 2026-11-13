@@ -772,17 +772,6 @@ async def mines_cashout(callback: CallbackQuery):
     await callback.answer(f"✅ Ты забрал {winnings:.0f} ⭐!", show_alert=True)
     await callback.message.delete()
 
-import threading
-import os
-import uvicorn
-import server  # файл server.py лежит рядом с bot.py
-
-server.BOT_TOKEN = BOT_TOKEN
-port = int(os.environ.get("PORT", 8080))
-threading.Thread(
-    target=lambda: uvicorn.run(server.app, host="0.0.0.0", port=port, log_level="warning"),
-    daemon=True,
-).start()
 
 async def main():
     print("Бот запущен...")
