@@ -17,7 +17,7 @@ if not config.BOT_TOKEN:
     raise RuntimeError("Не указан BOT_TOKEN")
 
 BOT_TOKEN = config.BOT_TOKEN
-bot = Bot(token=BOT_TOKEN)
+bot = Bot(token="9060799786:AAF4jBS6DsQGzkzoreLYMJe7g33rc3PjWxk")
 dp = Dispatcher()
 
 
