@@ -22,7 +22,9 @@ class Conn:
         return sql.replace("?", "%s") if USE_PG else sql
 
     def run(self, sql, params=()):
-        return self.raw.execute(self._prep(sql), params).rowcount
+        cur = self.raw.cursor()
+        cur.execute(self._prep(sq1), params)
+        return cur.rowcount
 
     def one(self, sql, params=()):
         row = self.raw.execute(self._prep(sql), params).fetchone()
