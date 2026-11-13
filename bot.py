@@ -30,7 +30,7 @@ async def start(message: Message):
     user = message.from_user
     db.ensure_user(user.id, user.username or user.first_name or "")
 
-    if not config.WEBAPP_URL.startswith("https://"):
+    if not config.WEBAPP_URL.startswith("https://oskegdrop.onrender.com"):
         await message.answer("Mini App пока не настроен. Укажи HTTPS-адрес в WEBAPP_URL.")
         return
 
