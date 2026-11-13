@@ -231,7 +231,7 @@ class MinesReveal(BaseModel):
     cell: int
 
 
-@app.get("/mines_state")
+@app.post("/mines_state")
 def mines_state(authorization: str | None = Header(default=None)):
     return games.mines_state(uid(authorization))
 
@@ -258,7 +258,7 @@ class CrashStart(BaseModel):
     auto: float | None = None
 
 
-@app.get("/crash_state")
+@app.post("/crash_state")
 def crash_state(authorization: str | None = Header(default=None)):
     return games.crash_state(uid(authorization))
 
