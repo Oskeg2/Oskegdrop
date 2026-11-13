@@ -9,7 +9,7 @@ USE_PG = bool(config.DATABASE_URL)
 
 if USE_PG:
     import psycopg2
-    from psycopg.rows import dict_row
+    #from psycopg.rows import dict_row
 
 
 class Conn:
