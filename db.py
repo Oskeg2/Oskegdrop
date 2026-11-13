@@ -8,7 +8,7 @@ import config
 USE_PG = bool(config.DATABASE_URL)
 
 if USE_PG:
-    import psycopg
+    import psycopg2
     from psycopg.rows import dict_row
 
 
