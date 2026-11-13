@@ -5,7 +5,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-BOT_TOKEN = "".join(os.getenv("BOT_TOKEN", "").split()).replace("BOT_TOKEN=", "").strip("\"'")
+import re
+_m = re.search(r"\d{5,}:[A-Za-z0-9_-]{20,}", os.getenv("BOT_TOKEN", ""))
+BOT_TOKEN = _m.group(0) if _m else ""
+print("TOKEN CHECK:", len(os.getenv("BOT_TOKEN", "")), bool(_m), flush=True)
 
 WEBAPP_URL = os.getenv("WEBAPP_URL", "").rstrip("/")
 
