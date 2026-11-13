@@ -36,7 +36,7 @@ class Conn:
 @contextmanager
 def tx():
     if USE_PG:
-        raw = psycopg.connect(config.DATABASE_URL, row_factory=dict_row)
+        raw = psycopg2.connect(config.DATABASE_URL)
     else:
         raw = sqlite3.connect(config.DATABASE_PATH, timeout=10)
         raw.row_factory = sqlite3.Row
