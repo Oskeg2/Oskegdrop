@@ -5,7 +5,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-BOT_TOKEN = os.getenv("BOT_TOKEN", "")
+BOT_TOKEN = "".join(os.getenv("BOT_TOKEN", "").split()).replace("BOT_TOKEN=", "").strip("\"'")
+
 WEBAPP_URL = os.getenv("WEBAPP_URL", "").rstrip("/")
 
 # Если задан DATABASE_URL (Postgres) - данные живут там и не пропадают
